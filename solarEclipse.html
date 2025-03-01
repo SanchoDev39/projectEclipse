@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width:100%;
+            height: 100vh;
+            background-image: url(eclipseBackground.jpg); 
+            perspective: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 800px;
+            perspective-origin: 50% calc(50% - 2em);
+        }
+        .scene {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: sceneRotate 69s infinite ;
+        }
+ 
+       
+        .sun {
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            background-color: rgb(253, 206, 50);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px 10px rgba(253, 178, 1, 0.8), inset 0 0 10px 5px rgba(251, 189, 2, 0.8);
+            animation: sceneRotate-reverse 69s  infinite;
+        }
+       
+        .moonContainer {
+            position: absolute;
+            top: 40;
+            left: 50%;
+            transform-style: preserve-3d;
+            /* animation: sceneRotate-reverse 59s infinite ; */
+        }
+          .moon{
+            /* width: 50px;  */
+            height: 50px; 
+            border-radius: 50%; 
+            background-color: rgb(29, 28, 28);
+            position: absolute; 
+            animation: sceneRotate 69s infinite,
+                        eclipse 59s reverse infinite;
+        }
+        .moon img{
+            width: 55px; 
+            height: 55px; 
+            border-radius: 50%; 
+            background-color: rgb(29, 28, 28);
+            position: absolute; 
+            /* animation: eclipse 14s infinite; */
+        
+        }
+        
+
+
+
+    @keyframes eclipse {
+    0%,100% {
+        top: 50%;
+        left: 50%;
+        transform: translateY(0deg) translateX(0deg) translateZ(0deg);
+        z-index: -1; 
+    }
+  
+    50% {
+        transform: translateY(1300deg) translateX(11220deg) translateZ(340deg);
+        z-index: 1;  
+    }
+    }
+
+    @keyframes sceneRotate-reverse {
+            
+            from {
+                transform: rotateY(360deg);
+            }
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+               @keyframes sceneRotate {
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="sun"></div>
+        <div class="moon moonContainer">
+        <div class="moon"><img src="moon.jpg" width="50" alt='moon'></div>
+        </div>
+        </div>
+
+
+       
+</body>
+</html>
